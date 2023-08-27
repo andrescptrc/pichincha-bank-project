@@ -1,3 +1,4 @@
+import { Product } from '@interfaces/products'
 import HttpRequest from './http-request'
 
 export class ProductsService extends HttpRequest {
@@ -7,5 +8,13 @@ export class ProductsService extends HttpRequest {
     })
 
     return this.get()
+  }
+
+  async createProduct(product: Product) {
+    this.configRequest({
+      endpoint: 'bp/products',
+    })
+
+    return this.post(product)
   }
 }

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { forwardRef, InputHTMLAttributes } from 'react'
-import { FieldError } from 'react-hook-form'
+import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
   ({ id, label, className, labelClasses, inputClasses, errors, errorClass, ...rest }, ref) => {
@@ -19,7 +19,9 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             {...rest}
           />
           {errors && (
-            <p className={classNames(errorClass, 'input-field__error')}>{errors?.message}</p>
+            <p className={classNames(errorClass, 'input-field__error')}>
+              {errors.message?.toString()}
+            </p>
           )}
         </div>
       </>
@@ -35,7 +37,7 @@ type InputFieldType = {
   labelClasses?: string
   inputClasses?: string
   errorClass?: string
-  errors?: FieldError
+  errors?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>
 }
 
 type InputFieldProps = InputFieldType & InputHTMLAttributes<HTMLInputElement>

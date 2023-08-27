@@ -12,6 +12,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages/'),
       '@components': path.resolve(__dirname, './src/common/components/'),
       '@atoms': path.resolve(__dirname, './src/common/components/atoms/index'),
+      '@schemas': path.resolve(__dirname, './src/common/schemas/index'),
       '@modules': path.resolve(__dirname, './src/modules/'),
       '@hooks': path.resolve(__dirname, './src/common/hooks/index'),
       '@wrappers': path.resolve(__dirname, './src/common/wrappers/index'),
