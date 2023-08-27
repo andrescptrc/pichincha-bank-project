@@ -1,18 +1,21 @@
-import { Fragment } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Fragment } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { ROUTES } from "@routes";
-import { Header } from "@components/organisms";
+import { ROUTES } from '@routes'
+import { Header } from '@components/organisms'
+import { ReactQuery } from '@wrappers'
 
-const router = createBrowserRouter(ROUTES);
+const router = createBrowserRouter(ROUTES)
 
 const App = () => {
   return (
     <Fragment>
-      <Header />
-      <RouterProvider router={router} />;
+      <ReactQuery>
+        <Header />
+        <RouterProvider router={router} />;
+      </ReactQuery>
     </Fragment>
-  );
-};
+  )
+}
 
-export default App;
+export default App

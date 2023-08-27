@@ -19,6 +19,7 @@
     "paths": {
       "@components/*": ["./src/common/components/*"],
       "@atoms": ["./src/common/components/atoms/index"],
+      "@wrappers": ["./src/common/wrappers/index"],
       "@molecules": ["./src/common/components/molecules/index"],
       "@organisms": ["./src/common/components/organisms/index"],
       "@layouts": ["./src/common/components/layouts/index"],
