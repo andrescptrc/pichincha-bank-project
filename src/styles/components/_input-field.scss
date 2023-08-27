@@ -1,0 +1,25 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+
+  &__input {
+    border: 2px solid rgb(var(--gray));
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    margin-bottom: 1rem;
+  }
+
+  &__error {
+    margin-top: 0.5rem;
+    color: red;
+  }
+}

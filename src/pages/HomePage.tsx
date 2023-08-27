@@ -1,5 +1,12 @@
-const HomePage = () => {
-  return <div className="App">Hola</div>;
-};
+import { ProductsList, SearchProducts } from '@components/molecules'
 
-export default HomePage;
+const HomePage = () => {
+  return (
+    <div className="container">
+      <SearchProducts />
+      <ProductsList />
+    </div>
+  )
+}
+
+export default HomePage

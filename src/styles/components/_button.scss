@@ -1,0 +1,15 @@
+.button {
+  background-color: rgb(var(--yellow));
+
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: 0;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(var(--yellow-light));
+  }
+}
