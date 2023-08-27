@@ -1,0 +1,29 @@
+.product_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  &__container {
+    max-width: 48rem;
+    padding: 2rem;
+    background-color: rgb(var(--white));
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+
+  &__group-buttons {
+    display: flex;
+    justify-content: center;
+  }
+}
