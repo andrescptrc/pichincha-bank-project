@@ -1,5 +1,6 @@
-import { useDeleteProduct } from '@hooks'
 import { useNavigate } from 'react-router-dom'
+
+import useDeleteProduct from '@hooks/useDeleteProduct'
 
 const MenuActions = ({ id }: MenuActionsProps) => {
   const navigate = useNavigate()

@@ -3,8 +3,8 @@ import { useState } from 'react'
 import SelectField from '@atoms/InputSelector'
 import ProductItem from '@atoms/ProductItem'
 import { isEmptyArray } from '@helpers/array'
-import { useGetProducts } from '@hooks'
 import { PAGE_SIZE } from '@constants/products'
+import useGetProducts from '@hooks/petitions/useGetProducts'
 
 const ProductsList = ({ query }: ProductsListProps) => {
   const [currentPage, setCurrentPage] = useState(1)

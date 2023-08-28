@@ -6,7 +6,6 @@ import dayjs from 'dayjs'
 
 import { Product } from '@interfaces/products'
 import { productFormSchema } from '@schemas'
-import { useCreateProduct, useEditProduct } from '@hooks'
 import { EMPTY_VALUES } from '@constants/form'
 import { useQueryClient } from '@tanstack/react-query'
 import { PRODUCT_ID_EXIST } from '@constants/cache-query-keys'
@@ -14,6 +13,8 @@ import { ProductsService } from '@services/products'
 import { isEmptyObject } from '@helpers/object'
 import InputField from '@atoms/InputField'
 import Button from '@atoms/Button'
+import useCreateProduct from '@hooks/useCreateProduct'
+import useEditProduct from '@hooks/useEditProduct'
 
 const productService = new ProductsService()
 

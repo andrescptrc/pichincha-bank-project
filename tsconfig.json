@@ -19,19 +19,18 @@
     "paths": {
       "@atoms/*": ["./src/common/components/atoms/*"],
       "@schemas": ["./src/common/schemas/index"],
-      "@wrappers": ["./src/common/wrappers/index"],
+      "@wrappers/*": ["./src/common/wrappers/*"],
       "@molecules": ["./src/common/components/molecules/index"],
       "@organisms": ["./src/common/components/organisms/index"],
       "@layouts": ["./src/common/components/layouts/index"],
       "@modules/*": ["./src/modules/*"],
       "@routes": ["./src/common/routes/index"],
-      "@hooks": ["./src/common/hooks/index"],
+      "@hooks/*": ["./src/common/hooks/*"],
       "@constants/*": ["./src/common/constants/*"],
       "@helpers/*": ["./src/common/helpers/*"],
       "@libs/*": ["./src/common/libs/*"],
       "@interfaces/*": ["./src/common/interfaces/*"],
       "@services/*": ["./src/common/services/*"],
-      "@api/*": ["./src/common/api/*"],
       "@slices/*": ["./src/common/store/slices/*"],
       "@pages/*": ["./src/pages/*"]
     }
