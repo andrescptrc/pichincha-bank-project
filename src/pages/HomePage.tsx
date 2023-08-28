@@ -7,7 +7,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <SearchProducts setQuery={setQuery} />
+      <SearchProducts query={query} setQuery={setQuery} />
       <ProductsList query={query} />
     </div>
   )

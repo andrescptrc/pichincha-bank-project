@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDebounce } from 'react-use'
 
 import SelectField from '@atoms/InputSelector'
 import ProductItem from '@atoms/ProductItem'
@@ -6,13 +7,25 @@ import { isEmptyArray } from '@helpers/array'
 import { PAGE_SIZE } from '@constants/products'
 import useGetProducts from '@hooks/petitions/useGetProducts'
 
+const SEARCH_DELAY = 300
+
 const ProductsList = ({ query }: ProductsListProps) => {
+  const [queryKey, setQueryKey] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [currentSelected, setCurrentSelected] = useState('')
   const { data: products = [], isLoading } = useGetProducts()
 
+  useDebounce(
+    () => {
+      setCurrentPage(1)
+      setQueryKey(query)
+    },
+    SEARCH_DELAY,
+    [query]
+  )
+
   const filterByQuery = products.filter((product) =>
-    product.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+    product.name.toLocaleLowerCase().includes(queryKey.toLocaleLowerCase())
   )
 
   const filterByPage = filterByQuery.slice((currentPage - 1) * PAGE_SIZE, PAGE_SIZE * currentPage)

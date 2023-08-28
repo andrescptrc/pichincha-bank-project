@@ -1,24 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 
 import { useState } from 'react'
-import { useDebounce } from 'react-use'
 import Button from '@atoms/Button'
 import InputField from '@atoms/InputField'
 
-const SEARCH_DELAY = 300
-
-const SearchProducts = ({ setQuery }: SearchProductsProps) => {
+const SearchProducts = ({ query, setQuery }: SearchProductsProps) => {
   const [inputValue, setInputValue] = useState('')
   const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
 
-    const query = e.target.value
-    setInputValue(query)
+    const value = e.target.value
+    setQuery(value)
   }
-
-  useDebounce(() => setQuery(inputValue), SEARCH_DELAY, [inputValue])
 
   const handleRedirect = () => navigate('/products/create')
 
@@ -28,7 +23,7 @@ const SearchProducts = ({ setQuery }: SearchProductsProps) => {
         id="productSearch"
         placeholder="Search..."
         autoComplete="off"
-        value={inputValue}
+        value={query}
         onChange={handleChange}
       />
       <Button className="button-yellow" onClick={handleRedirect}>
@@ -39,6 +34,7 @@ const SearchProducts = ({ setQuery }: SearchProductsProps) => {
 }
 
 type SearchProductsProps = {
+  query: string
   setQuery: (query: string) => void
 }
 
