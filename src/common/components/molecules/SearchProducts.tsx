@@ -1,11 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 
-import { useState } from 'react'
 import Button from '@atoms/Button'
 import InputField from '@atoms/InputField'
 
 const SearchProducts = ({ query, setQuery }: SearchProductsProps) => {
-  const [inputValue, setInputValue] = useState('')
   const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
