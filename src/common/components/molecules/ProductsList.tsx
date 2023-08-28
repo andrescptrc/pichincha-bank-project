@@ -3,10 +3,15 @@ import { useState } from 'react'
 import SelectField from '@components/atoms/InputSelector'
 import ProductItem from '@components/atoms/ProductItem'
 import { useGetProducts } from '@hooks'
+import { isEmptyArray } from '@helpers/array'
 
-const ProductsList = () => {
+const ProductsList = ({ query }: ProductsListProps) => {
   const [currentSelected, setCurrentSelected] = useState('')
   const { data: products = [], isLoading } = useGetProducts()
+
+  const filterByQuery = products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+  )
 
   return (
     <div className="products-list">
@@ -29,7 +34,7 @@ const ProductsList = () => {
           )}
 
           {!isLoading &&
-            products.map((product) => (
+            filterByQuery.map((product) => (
               <ProductItem
                 key={product.id}
                 product={product}
@@ -37,14 +42,26 @@ const ProductsList = () => {
                 currentSelected={currentSelected}
               />
             ))}
+
+          {!isLoading && isEmptyArray(filterByQuery) && (
+            <tr>
+              <td>No hay resultados</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <div className="products-list__footer">
-        <p className="results">{isLoading ? 'Cargando...' : `${products.length} Resultados`}</p>
+        <p className="results">
+          {isLoading ? 'Cargando...' : `${filterByQuery.length} Resultados`}
+        </p>
         <SelectField />
       </div>
     </div>
   )
+}
+
+type ProductsListProps = {
+  query: string
 }
 
 export default ProductsList
