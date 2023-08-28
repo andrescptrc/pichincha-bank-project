@@ -1,4 +1,4 @@
-import { ProductForm } from '@components/molecules'
+import { ProductForm } from '@molecules'
 
 const CreatePage = () => {
   return (

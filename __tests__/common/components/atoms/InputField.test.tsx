@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 
-import { InputField } from '@atoms'
+import InputField from '@atoms/InputField'
 
 describe('InputField Tests', () => {
   it('Should render the input correctly', () => {

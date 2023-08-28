@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 
-import { Button } from '@atoms'
+import Button from '@atoms/Button'
 
 describe('Button Tests', () => {
   it('The buttons should render correctly', () => {

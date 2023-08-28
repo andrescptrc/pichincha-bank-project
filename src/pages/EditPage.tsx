@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom'
 import dayjs from 'dayjs'
 
-import { ProductForm } from '@components/molecules'
 import { PRODUCTS } from '@constants/cache-query-keys'
 import { Product } from '@interfaces/products'
 import { useQueryClient } from '@tanstack/react-query'
+import { ProductForm } from '@molecules'
 
 const EditPage = () => {
   const { id } = useParams()

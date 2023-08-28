@@ -17,7 +17,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@atoms": ["./src/common/components/atoms/index"],
+      "@atoms/*": ["./src/common/components/atoms/*"],
       "@schemas": ["./src/common/schemas/index"],
       "@wrappers": ["./src/common/wrappers/index"],
       "@molecules": ["./src/common/components/molecules/index"],

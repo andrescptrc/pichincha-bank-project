@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import SelectField from '@components/atoms/InputSelector'
-import ProductItem from '@components/atoms/ProductItem'
+import SelectField from '@atoms/InputSelector'
+import ProductItem from '@atoms/ProductItem'
 import { isEmptyArray } from '@helpers/array'
 import { useGetProducts } from '@hooks'
 import { PAGE_SIZE } from '@constants/products'

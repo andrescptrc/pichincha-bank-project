@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ProductsList, SearchProducts } from '@components/molecules'
+
+import { ProductsList, SearchProducts } from '@molecules'
 
 const HomePage = () => {
   const [query, setQuery] = useState('')

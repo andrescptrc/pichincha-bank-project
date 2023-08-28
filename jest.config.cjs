@@ -18,9 +18,10 @@ module.exports = {
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-    '^@atoms': ['<rootDir>/src/common/components/atoms/index'],
-    '^@organisms': '<rootDir>/src/common/components/organisms/index',
+    '^@atoms/(.*)': ['<rootDir>/src/common/components/atoms/$1'],
     '^@helpers/(.*)': ['<rootDir>/src/common/helpers/$1'],
+    '^@constants/(.*)': ['<rootDir>/src/common/constants/$1'],
+    '^@organisms': '<rootDir>/src/common/components/organisms/index',
   },
   moduleFileExtensions: [
     // Place tsx and ts to beginning as suggestion from Jest team

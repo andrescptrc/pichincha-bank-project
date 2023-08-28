@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 
-import { Button, InputField } from '@components/atoms'
 import { useState } from 'react'
 import { useDebounce } from 'react-use'
+import Button from '@atoms/Button'
+import InputField from '@atoms/InputField'
 
 const SEARCH_DELAY = 300
 
