@@ -26,6 +26,7 @@ const SearchProducts = ({ setQuery }: SearchProductsProps) => {
       <InputField
         id="productSearch"
         placeholder="Search..."
+        autoComplete="off"
         value={inputValue}
         onChange={handleChange}
       />
