@@ -1,1 +1,2 @@
 export const PRODUCTS = 'PRODUCTS'
+export const PRODUCT_ID_EXIST = 'PRODUCT_ID_EXIST'

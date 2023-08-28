@@ -33,4 +33,12 @@ export class ProductsService extends HttpRequest {
 
     return this.put(values)
   }
+
+  async verificateId(id: string) {
+    this.configRequest({
+      endpoint: `bp/products/verification?id=${id}`,
+    })
+
+    return this.get<boolean>()
+  }
 }

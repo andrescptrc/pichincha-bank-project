@@ -9,14 +9,22 @@ import { productFormSchema } from '@schemas'
 import { Button, InputField } from '@components/atoms'
 import { useCreateProduct, useEditProduct } from '@hooks'
 import { EMPTY_VALUES } from '@constants/form'
+import { useQueryClient } from '@tanstack/react-query'
+import { PRODUCT_ID_EXIST } from '@constants/cache-query-keys'
+import { ProductsService } from '@services/products'
+
+const productService = new ProductsService()
 
 const ProductForm = ({ product }: ProductFormProps) => {
   const isEdit = Boolean(product)
+
+  const queryClient = useQueryClient()
 
   const {
     handleSubmit: onSubmit,
     register,
     formState: { errors },
+    setError,
     setValue,
     watch,
     reset,
@@ -30,6 +38,16 @@ const ProductForm = ({ product }: ProductFormProps) => {
 
   const handleSubmitCreate = async (values: Product) => {
     if (isCreating) return
+
+    const idExist = await queryClient.fetchQuery([PRODUCT_ID_EXIST], () =>
+      productService.verificateId(values.id)
+    )
+
+    if (idExist) {
+      setError('id', { type: 'custom', message: 'El ID ya existe' })
+      return
+    }
+
     mutateCreate(values)
     reset()
   }
