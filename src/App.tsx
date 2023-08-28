@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ROUTES } from '@routes'
-import { Header } from '@components/organisms'
+import { Header } from '@organisms'
 import { ReactQuery } from '@wrappers'
 
 const router = createBrowserRouter(ROUTES)
