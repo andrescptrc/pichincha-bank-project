@@ -12,6 +12,7 @@ import { EMPTY_VALUES } from '@constants/form'
 import { useQueryClient } from '@tanstack/react-query'
 import { PRODUCT_ID_EXIST } from '@constants/cache-query-keys'
 import { ProductsService } from '@services/products'
+import { isEmptyObject } from '@helpers/object'
 
 const productService = new ProductsService()
 
@@ -37,7 +38,7 @@ const ProductForm = ({ product }: ProductFormProps) => {
   const { mutate: mutateEdit, isLoading: isEditing } = useEditProduct()
 
   const handleSubmitCreate = async (values: Product) => {
-    if (isCreating) return
+    if (isCreating || isError) return
 
     const idExist = await queryClient.fetchQuery([PRODUCT_ID_EXIST], () =>
       productService.verificateId(values.id)
@@ -53,12 +54,15 @@ const ProductForm = ({ product }: ProductFormProps) => {
   }
 
   const handleSubmitEdit = async (values: Product) => {
-    if (isEditing) return
+    if (isEditing || isError) return
+
     mutateEdit(values)
     reset()
   }
 
   const dateRelease = watch('date_release')
+
+  const isError = !isEmptyObject(errors)
 
   useEffect(() => {
     if (!dateRelease) return
@@ -71,7 +75,7 @@ const ProductForm = ({ product }: ProductFormProps) => {
   return (
     <div className="product_form">
       <div className="product_form__container">
-        <h2>Formulario de Registro</h2>
+        <h2>Formulario de {isEdit ? 'Edicion' : 'Registro'}</h2>
         <form onSubmit={onSubmit(isEdit ? handleSubmitEdit : handleSubmitCreate)}>
           <div className="product_form__group">
             <InputField
@@ -116,12 +120,12 @@ const ProductForm = ({ product }: ProductFormProps) => {
             )}
 
             {isEdit && (
-              <Button type="submit" className="button-yellow" disabled={isEditing}>
+              <Button type="submit" className="button-yellow" disabled={isEditing || isError}>
                 {isEditing ? 'Editando...' : 'Editar'}
               </Button>
             )}
             {!isEdit && (
-              <Button type="submit" className="button-yellow" disabled={isCreating}>
+              <Button type="submit" className="button-yellow" disabled={isCreating || isError}>
                 {isCreating ? 'Enviando...' : 'Enviar'}
               </Button>
             )}

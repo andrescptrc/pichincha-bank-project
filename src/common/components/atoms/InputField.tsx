@@ -15,7 +15,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           <input
             id={id}
             ref={ref}
-            className={classNames(inputClasses, 'input-field__input')}
+            className={classNames(inputClasses, 'input-field__input', { 'input-error': errors })}
             {...rest}
           />
           {errors && (

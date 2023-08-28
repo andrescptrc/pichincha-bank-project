@@ -16,10 +16,16 @@
 
   &__label {
     margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 
   &__error {
     margin-top: 0.5rem;
     color: red;
+    font-size: 0.8rem;
+  }
+
+  .input-error {
+    border: 2px solid red;
   }
 }
