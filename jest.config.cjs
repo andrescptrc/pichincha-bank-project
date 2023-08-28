@@ -14,6 +14,7 @@ module.exports = {
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
+  testPathIgnorePatterns: ['<rootDir>/__tests__/utilities', '<rootDir>/__tests__/mocks'],
   modulePaths: ['<rootDir>/src'],
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
@@ -26,6 +27,7 @@ module.exports = {
     '^@helpers/(.*)': ['<rootDir>/src/common/helpers/$1'],
     '^@constants/(.*)': ['<rootDir>/src/common/constants/$1'],
     '^@organisms': '<rootDir>/src/common/components/organisms/index',
+    '^@routes/(.*)': '<rootDir>/src/common/routes/$1',
   },
   moduleFileExtensions: [
     // Place tsx and ts to beginning as suggestion from Jest team

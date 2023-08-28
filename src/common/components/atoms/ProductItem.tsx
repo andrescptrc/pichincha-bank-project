@@ -23,7 +23,7 @@ const ProductItem = ({ product, currentSelected, setCurrentSelected }: ProductIt
 
   return (
     <Fragment>
-      <tr>
+      <tr className="product-item">
         <td>
           <img src={logo} alt={name} />
         </td>
@@ -32,7 +32,7 @@ const ProductItem = ({ product, currentSelected, setCurrentSelected }: ProductIt
         <td>{parsedReleaseDate}</td>
         <td>{parsedRevisionDate}</td>
         <td className="products-list__logo">
-          <EllipsisVerticalIcon onClick={handleClick} />
+          <EllipsisVerticalIcon onClick={handleClick} title="Menu" />
           {canShow && <MenuActions id={id} />}
         </td>
       </tr>

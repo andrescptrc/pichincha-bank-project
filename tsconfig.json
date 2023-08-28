@@ -24,7 +24,7 @@
       "@organisms": ["./src/common/components/organisms/index"],
       "@layouts": ["./src/common/components/layouts/index"],
       "@modules/*": ["./src/modules/*"],
-      "@routes": ["./src/common/routes/index"],
+      "@routes/*": ["./src/common/routes/*"],
       "@hooks/*": ["./src/common/hooks/*"],
       "@constants/*": ["./src/common/constants/*"],
       "@helpers/*": ["./src/common/helpers/*"],
