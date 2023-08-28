@@ -1,10 +1,11 @@
-import SelectField from '@components/atoms/InputSelector'
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 
+import SelectField from '@components/atoms/InputSelector'
+import ProductItem from '@components/atoms/ProductItem'
 import { useGetProducts } from '@hooks'
-import dayjs from 'dayjs'
 
 const ProductsList = () => {
+  const [currentSelected, setCurrentSelected] = useState('')
   const { data: products = [], isLoading } = useGetProducts()
 
   return (
@@ -28,25 +29,14 @@ const ProductsList = () => {
           )}
 
           {!isLoading &&
-            products.map((product) => {
-              const parsedReleaseDate = dayjs(product.date_release).format('DD/MM/YYYY')
-              const parsedRevisionDate = dayjs(product.date_revision).format('DD/MM/YYYY')
-
-              return (
-                <tr key={product.id}>
-                  <td>
-                    <img src={product.logo} alt={product.name} />
-                  </td>
-                  <td>{product.name}</td>
-                  <td>{product.description}</td>
-                  <td>{parsedReleaseDate}</td>
-                  <td>{parsedRevisionDate}</td>
-                  <td className="products-list__logo">
-                    <EllipsisVerticalIcon />
-                  </td>
-                </tr>
-              )
-            })}
+            products.map((product) => (
+              <ProductItem
+                key={product.id}
+                product={product}
+                setCurrentSelected={setCurrentSelected}
+                currentSelected={currentSelected}
+              />
+            ))}
         </tbody>
       </table>
       <div className="products-list__footer">

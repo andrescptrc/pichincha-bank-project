@@ -7,9 +7,12 @@ import dayjs from 'dayjs'
 import { Product } from '@interfaces/products'
 import { productFormSchema } from '@schemas'
 import { Button, InputField } from '@components/atoms'
-import { useCreateProduct } from '@hooks'
+import { useCreateProduct, useEditProduct } from '@hooks'
+import { EMPTY_VALUES } from '@constants/form'
 
-const ProductForm = () => {
+const ProductForm = ({ product }: ProductFormProps) => {
+  const isEdit = Boolean(product)
+
   const {
     handleSubmit: onSubmit,
     register,
@@ -17,13 +20,23 @@ const ProductForm = () => {
     setValue,
     watch,
     reset,
-  } = useForm<Product>({ resolver: joiResolver(productFormSchema) })
+  } = useForm<Product>({
+    resolver: joiResolver(productFormSchema),
+    defaultValues: isEdit ? product : EMPTY_VALUES,
+  })
 
-  const { mutate, isLoading } = useCreateProduct()
+  const { mutate: mutateCreate, isLoading: isCreating } = useCreateProduct()
+  const { mutate: mutateEdit, isLoading: isEditing } = useEditProduct()
 
-  const handleSubmit = async (values: Product) => {
-    if (isLoading) return
-    mutate(values)
+  const handleSubmitCreate = async (values: Product) => {
+    if (isCreating) return
+    mutateCreate(values)
+    reset()
+  }
+
+  const handleSubmitEdit = async (values: Product) => {
+    if (isEditing) return
+    mutateEdit(values)
     reset()
   }
 
@@ -41,9 +54,16 @@ const ProductForm = () => {
     <div className="product_form">
       <div className="product_form__container">
         <h2>Formulario de Registro</h2>
-        <form onSubmit={onSubmit(handleSubmit)}>
+        <form onSubmit={onSubmit(isEdit ? handleSubmitEdit : handleSubmitCreate)}>
           <div className="product_form__group">
-            <InputField type="text" label="ID" errors={errors.id} {...register('id')} />
+            <InputField
+              type="text"
+              label="ID"
+              labelClasses={isEdit ? 'product_form__disabled' : ''}
+              disabled={isEdit}
+              errors={errors.id}
+              {...register('id')}
+            />
             <InputField label="Nombre" errors={errors.name} {...register('name')} />
           </div>
           <div className="product_form__group">
@@ -71,17 +91,31 @@ const ProductForm = () => {
             />
           </div>
           <div className="product_form__group-buttons">
-            <Button className="margin-r-2" onClick={() => reset()}>
-              Reiniciar
-            </Button>
-            <Button type="submit" className="button-yellow" disabled={isLoading}>
-              {isLoading ? 'Enviando...' : 'Enviar'}
-            </Button>
+            {!isEdit && (
+              <Button className="margin-r-2" onClick={() => reset()}>
+                Reiniciar
+              </Button>
+            )}
+
+            {isEdit && (
+              <Button type="submit" className="button-yellow" disabled={isEditing}>
+                {isEditing ? 'Editando...' : 'Editar'}
+              </Button>
+            )}
+            {!isEdit && (
+              <Button type="submit" className="button-yellow" disabled={isCreating}>
+                {isCreating ? 'Enviando...' : 'Enviar'}
+              </Button>
+            )}
           </div>
         </form>
       </div>
     </div>
   )
+}
+
+type ProductFormProps = {
+  product?: Product
 }
 
 export default ProductForm

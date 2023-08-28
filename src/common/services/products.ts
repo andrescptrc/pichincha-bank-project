@@ -17,4 +17,20 @@ export class ProductsService extends HttpRequest {
 
     return this.post(product)
   }
+
+  async deleteProduct(id: string) {
+    this.configRequest({
+      endpoint: `bp/products?id=${id}`,
+    })
+
+    return this.delete()
+  }
+
+  async editProduct(values: Product) {
+    this.configRequest({
+      endpoint: 'bp/products',
+    })
+
+    return this.put(values)
+  }
 }
