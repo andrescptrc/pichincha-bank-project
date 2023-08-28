@@ -19,9 +19,10 @@ const productFormSchema = Joi.object({
     'string.max': 'La Descripcion debe tener maximo 200 caracteres',
     'any.required': 'La Descripcion es requerida',
   }),
-  logo: Joi.string().required().messages({
+  logo: Joi.string().required().uri().messages({
     'string.empty': 'El Logo es requerido',
     'any.required': 'El Logo es requerido',
+    'string.uri': 'El Logo debe ser una URL válida',
   }),
   date_release: Joi.string().required().messages({
     'string.empty': 'La fecha de liberacion es requerida',

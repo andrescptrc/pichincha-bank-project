@@ -17,8 +17,6 @@ const ProductsList = ({ query }: ProductsListProps) => {
 
   const filterByPage = filterByQuery.slice((currentPage - 1) * PAGE_SIZE, PAGE_SIZE * currentPage)
 
-  console.log((currentPage - 1) * PAGE_SIZE, PAGE_SIZE * currentPage)
-
   const handlePageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const page = Number(e.target.value)
     setCurrentPage(page)
