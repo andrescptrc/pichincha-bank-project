@@ -6,12 +6,16 @@
 
   &__container {
     max-width: 48rem;
-    padding: 2rem;
     background-color: rgb(var(--white));
+  }
+
+  form {
+    padding: 2rem;
   }
 
   h2 {
     text-align: center;
+    margin-bottom: 2rem;
   }
 
   &__group {

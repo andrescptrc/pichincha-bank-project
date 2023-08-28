@@ -12,6 +12,10 @@
     &:focus {
       outline: none;
     }
+
+    &:disabled {
+      color: rgb(var(--gray));
+    }
   }
 
   &__label {

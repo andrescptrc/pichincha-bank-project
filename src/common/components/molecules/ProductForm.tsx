@@ -72,10 +72,13 @@ const ProductForm = ({ product }: ProductFormProps) => {
     setValue('date_revision', parsedRevisionDate)
   }, [dateRelease])
 
+  const minDate = dayjs().format('YYYY-MM-DD')
+
   return (
     <div className="product_form">
       <div className="product_form__container">
         <h2>Formulario de {isEdit ? 'Edicion' : 'Registro'}</h2>
+        <div className="divider" />
         <form onSubmit={onSubmit(isEdit ? handleSubmitEdit : handleSubmitCreate)}>
           <div className="product_form__group">
             <InputField
@@ -100,6 +103,7 @@ const ProductForm = ({ product }: ProductFormProps) => {
             <InputField
               type="date"
               label="Fecha Liberacion"
+              min={!isEdit ? minDate : ''}
               errors={errors.date_release}
               {...register('date_release')}
             />
@@ -107,6 +111,7 @@ const ProductForm = ({ product }: ProductFormProps) => {
               type="date"
               label="Fecha Revision"
               labelClasses="product_form__disabled"
+              min={!isEdit ? minDate : ''}
               disabled={true}
               errors={errors.date_revision}
               {...register('date_revision')}

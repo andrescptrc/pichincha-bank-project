@@ -60,7 +60,9 @@ const ProductsList = ({ query }: ProductsListProps) => {
         </tbody>
       </table>
       <div className="products-list__footer">
-        <p className="results">{isLoading ? 'Cargando...' : `${filterByPage.length} Resultados`}</p>
+        <p className="results">
+          {isLoading ? 'Cargando...' : `${filterByQuery.length} Resultados`}
+        </p>
         <SelectField products={filterByQuery} onChange={handlePageChange} />
       </div>
     </div>
