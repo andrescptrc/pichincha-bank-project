@@ -19,3 +19,13 @@
     background-color: rgb(var(--yellow-light));
   }
 }
+
+.button-disabled {
+  background-color: rgb(var(--gray));
+
+  &:hover {
+    background-color: rgb(var(--gray));
+  }
+
+  cursor: default;
+}

@@ -27,10 +27,7 @@ const productFormSchema = Joi.object({
     'string.empty': 'La fecha de liberacion es requerida',
     'any.required': 'La fecha de liberacion es requerida',
   }),
-  date_revision: Joi.string().required().messages({
-    'string.empty': 'La fecha de revision es requerida',
-    'any.required': 'La fecha de revision es requerida',
-  }),
+  date_revision: Joi.allow(),
 })
 
 export default productFormSchema

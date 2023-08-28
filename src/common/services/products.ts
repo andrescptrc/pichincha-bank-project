@@ -7,7 +7,7 @@ export class ProductsService extends HttpRequest {
       endpoint: 'bp/products',
     })
 
-    return this.get()
+    return this.get<Product[]>()
   }
 
   async createProduct(product: Product) {

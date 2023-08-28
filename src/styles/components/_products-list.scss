@@ -6,6 +6,7 @@
   table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 2rem;
   }
 
   thead {
@@ -15,5 +16,31 @@
   th,
   td {
     padding: 1rem 0.5rem;
+    border-bottom: 2px solid rgb(var(--gray));
+  }
+
+  img {
+    width: 4rem;
+  }
+
+  &__logo {
+    width: 1rem;
+    cursor: pointer;
+
+    svg {
+      color: rgb(var(--gray-darker));
+
+      width: 2rem;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .results {
+      font-weight: 600;
+    }
   }
 }

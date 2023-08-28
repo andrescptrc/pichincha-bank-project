@@ -3,11 +3,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { PRODUCTS } from '@constants/cache-query-keys'
 import { Product } from '@interfaces/products'
 import { ProductsService } from '@services/products'
+import { useNavigate } from 'react-router-dom'
 
 const productService = new ProductsService()
 
 const useCreateProduct = () => {
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
   const mutate = useMutation(async (product: Product) => productService.createProduct(product), {
     onMutate: async (newProduct: Product) => {
@@ -25,6 +27,7 @@ const useCreateProduct = () => {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: [PRODUCTS] })
+      navigate('/')
     },
   })
 
